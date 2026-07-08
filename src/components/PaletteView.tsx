@@ -4,6 +4,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { PaletteViewProps } from '../types';
 import { palette } from '../theme/palette';
 import { GRADIENT_PRIMARY, GRADIENT_SECONDARY } from '../constants';
+import githubLogo from '../assets/images/github_logo.png';
 
 const PaletteView: React.FC<PaletteViewProps> = ({ onBack }) => {
   const colorList = Object.values(palette.colors);
@@ -35,12 +36,39 @@ const PaletteView: React.FC<PaletteViewProps> = ({ onBack }) => {
             sx={{
               height: 72,
               borderRadius: 1,
-              backgroundColor: `#${color.hex}`,
+              backgroundColor: `${color.hex}`,
               border: '1px solid rgba(0,0,0,0.08)',
             }}
             title={`${color.name} #${color.hex}`}
           />
         ))}
+      </Box>
+
+      <Box sx={{ mb: 3, textAlign: 'center' }}>
+        <img
+          src={githubLogo}
+          alt='Cat 5 Disaster illustration'
+          style={{
+            maxWidth: '100%',
+            height: 'auto',
+            maxHeight: 300,
+          }}
+        />
+        <Typography variant='body2' color='text.secondary' sx={{ mt: 1 }}>
+          Palette generated from this custom illustration  commission by the artist {' '}
+          <Box
+            component='a'
+            href='mailto:achmadyoungky3@gmail.com'
+            sx={{
+              textDecoration: 'none',
+              color: 'inherit',
+              '&:hover': { textDecoration: 'underline' },
+            }}
+          >
+            Tee Spoon.
+          </Box>
+
+        </Typography>
       </Box>
 
       <Box
@@ -53,6 +81,7 @@ const PaletteView: React.FC<PaletteViewProps> = ({ onBack }) => {
           fontFamily: 'Monospace, monospace',
           fontSize: '0.85rem',
           whiteSpace: 'pre-wrap',
+          wordBreak: 'break-word',
         }}
       >
         <Typography component='div' sx={{ mb: 1, fontWeight: 600 }}>
@@ -97,11 +126,11 @@ const PaletteView: React.FC<PaletteViewProps> = ({ onBack }) => {
         sx={{
           marginTop: 1,
           width: '100%',
-          background: `linear-gradient(135deg, ${GRADIENT_PRIMARY} 0%, ${GRADIENT_SECONDARY} 100%)`,
+          background: GRADIENT_PRIMARY,
         }}
         onClick={() => navigator.clipboard.writeText(palette.csv)}
       >
-        Copy CSV
+        Want this Palette? Copy the CSV to your clipboard!
       </Button>
     </Paper>
   );

@@ -6,6 +6,7 @@ import PaletteView from './components/PaletteView';
 import { useHelloWorldClick } from './hooks/useHelloWorldClick';
 import { theme } from './theme/theme';
 import { GRADIENT_PRIMARY, GRADIENT_SECONDARY } from './constants';
+import { palette } from './theme/palette';
 import './styles/App.css';
 
 const App: React.FC = () => {
@@ -20,7 +21,7 @@ const App: React.FC = () => {
           justifyContent: 'center',
           alignItems: 'center',
           minHeight: '100vh',
-          background: `linear-gradient(135deg, ${GRADIENT_PRIMARY} 0%, ${GRADIENT_SECONDARY} 100%)`,
+          background: `linear-gradient(180deg, ${GRADIENT_PRIMARY} 0%, ${GRADIENT_SECONDARY} 100%)`,
           padding: 2,
         }}
       >
@@ -29,9 +30,8 @@ const App: React.FC = () => {
             <Box sx={{ position: 'absolute', top: 16, right: 16, zIndex: 2 }}>
               <IconButton
                 onClick={() => setShowPalette(true)}
-                color='secondary'
                 aria-label='Open palette view'
-                sx={{ backgroundColor: 'rgba(255,255,255,0.92)' }}
+                sx={{backgroundColor: palette.colors.rosyTaupe.hex, color: palette.colors.black.hex, '&:hover': { backgroundColor: palette.colors.rosyTaupe.hex }}}
               >
                 <HelpOutlineIcon />
               </IconButton>

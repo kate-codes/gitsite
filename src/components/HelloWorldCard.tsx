@@ -6,10 +6,9 @@ import {
   APP_DESCRIPTION,
   APP_SUBTEXT,
   APP_BUTTON_TEXT,
-  GRADIENT_PRIMARY,
-  GRADIENT_SECONDARY,
   APP_HELP_TEXT,
 } from '../constants';
+import { palette } from '../theme/palette';
 
 const HelloWorldCard: React.FC<HelloWorldCardProps> = ({ onButtonClick }) => {
   return (
@@ -40,7 +39,10 @@ const HelloWorldCard: React.FC<HelloWorldCardProps> = ({ onButtonClick }) => {
         onClick={onButtonClick}
         sx={{
           marginTop: 2,
-          background: `linear-gradient(135deg, ${GRADIENT_PRIMARY} 0%, ${GRADIENT_SECONDARY} 100%)`,
+          background: palette.colors.rosyTaupe.hex,
+          '&:hover': {
+            background: palette.colors.rosyTaupe.hex,
+          }
         }}
       >
         {APP_BUTTON_TEXT}
