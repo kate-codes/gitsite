@@ -2,7 +2,7 @@
     "name": "hello-world-react",
     "version": "0.1.0",
     "private": true,
-    "homepage": "https://kate-codes.github.io",
+    "homepage": "https://kate-codes.github.io/gitsite",
     "dependencies": {
         "@mui/material": "^5.14.0",
         "@emotion/react": "^11.11.0",
