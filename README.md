@@ -44,6 +44,11 @@ To run the app locally:
 npm run dev
 ```
 
+To build app locally, and preview: 
+```bash
+npm run build && npm run preview
+```
+
 The app will be available at `http://localhost:5173`
 
 # How to Deploy to GitHub Pages
