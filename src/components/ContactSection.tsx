@@ -3,8 +3,10 @@ import { Box, Button, Divider, Link, Paper, Typography } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import EmailIcon from '@mui/icons-material/Email';
+import GitHubIcon from '@mui/icons-material/GitHub';
 import {
   CONTACT_EMAIL_URL,
+  CONTACT_GITHUB_URL,
   CONTACT_INQUIRY_URL,
   CONTACT_LINKEDIN_URL,
   DISPLAY_NAME,
@@ -26,6 +28,14 @@ const CONTACT_LINKS = new Map<string, { url: string; icon: React.ReactNode; labe
       url: CONTACT_LINKEDIN_URL,
       icon: <LinkedInIcon fontSize='small' />,
       label: 'View LinkedIn profile',
+    },
+  ],
+  [
+    'GitHub',
+    {
+      url: CONTACT_GITHUB_URL,
+      icon: <GitHubIcon fontSize='small' />,
+      label: 'View GitHub profile',
     },
   ],
 ]);

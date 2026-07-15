@@ -42,6 +42,7 @@ export const PROFESSIONAL_SUMMARY: Array<{ heading: string; body: string }> = [
 export const CONTACT_INQUIRY_URL = '';
 export const CONTACT_EMAIL_URL = 'mailto:kcodes.sde@gmail.com';
 export const CONTACT_LINKEDIN_URL = 'https://www.linkedin.com/in/kate-codes/';
+export const CONTACT_GITHUB_URL = 'https://github.com/kate-codes';
 
 export const RESUME_HEADLINE = 'Product Engineer | Full Stack | AI Systems | Human-Centered Design';
 export const RESUME_AVAILABILITY =
