@@ -3,16 +3,19 @@ import { AppBar, Toolbar, Box, Button, Avatar } from '@mui/material';
 import githubLogo from '../assets/images/github_logo.png';
 import { palette } from '../theme/palette';
 import { DISPLAY_NAME } from '../constants';
+import { NavBarProps } from '../types';
 import '../styles/NavBar.css';
 
 const NAV_ITEMS = ['About', 'Experience', 'Projects', 'Contact'];
 
-const NavBar: React.FC = () => {
+const NavBar: React.FC<NavBarProps> = ({ onNavClick, activeSection }) => {
   const nameRef = useRef<HTMLSpanElement>(null);
 
   useLayoutEffect(() => {
     const el = nameRef.current;
-    if (!el) { return; }
+    if (!el) {
+      return;
+    }
     // CSS animations override inline styles, so disable animation first to get natural width
     el.style.animation = 'none';
     el.style.setProperty('--typewriter-width', `${el.offsetWidth}px`);
@@ -30,10 +33,17 @@ const NavBar: React.FC = () => {
         {NAV_ITEMS.map((item) => (
           <Button
             key={item}
+            onClick={() => onNavClick(item)}
             sx={{
               color: palette.colors.floralWhite.hex,
               textTransform: 'none',
               fontSize: '0.95rem',
+              fontWeight: activeSection === item ? 700 : 400,
+              borderBottom:
+                activeSection === item
+                  ? `2px solid ${palette.colors.rosyTaupe.hex}`
+                  : '2px solid transparent',
+              borderRadius: 0,
               '&:hover': { backgroundColor: `${palette.colors.smokyRose.hex}40` },
             }}
           >

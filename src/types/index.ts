@@ -6,3 +6,8 @@ export interface HelloWorldCardProps {
 export interface PaletteViewProps {
   onBack: () => void;
 }
+
+export interface NavBarProps {
+  onNavClick: (section: string) => void;
+  activeSection: string;
+}

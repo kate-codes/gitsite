@@ -4,6 +4,7 @@ import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import HelloWorldCard from './components/HelloWorldCard';
 import PaletteView from './components/PaletteView';
 import NavBar from './components/NavBar';
+import AboutSection from './components/AboutSection';
 import { useHelloWorldClick } from './hooks/useHelloWorldClick';
 import { theme } from './theme/theme';
 import { GRADIENT_PRIMARY, GRADIENT_SECONDARY } from './constants';
@@ -13,11 +14,23 @@ import './styles/App.css';
 const App: React.FC = () => {
   const { handleClick } = useHelloWorldClick();
   const [showPalette, setShowPalette] = useState(false);
+  const [activeSection, setActiveSection] = useState('');
+
+  const handleNavClick = (section: string) => {
+    setActiveSection((prev) => (prev === section ? '' : section));
+    setShowPalette(false);
+  };
+
+  const renderMainContent = () => {
+    if (activeSection === 'About') { return <AboutSection />; }
+    if (showPalette) { return <PaletteView onBack={() => setShowPalette(false)} />; }
+    return <HelloWorldCard onButtonClick={handleClick} />;
+  };
 
   return (
     <ThemeProvider theme={theme}>
       <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-        <NavBar />
+        <NavBar onNavClick={handleNavClick} activeSection={activeSection} />
         <Box
           sx={{
             display: 'flex',
@@ -28,8 +41,16 @@ const App: React.FC = () => {
             padding: 2,
           }}
         >
-          <Box sx={{ position: 'relative', width: '100%', maxWidth: 560 }}>
-            {!showPalette && (
+          <Box
+            sx={{
+              position: 'relative',
+              width: '100%',
+              maxWidth: 640,
+              display: 'flex',
+              justifyContent: 'center',
+            }}
+          >
+            {!showPalette && activeSection === '' && (
               <Box sx={{ position: 'absolute', top: 16, right: 16, zIndex: 2 }}>
                 <IconButton
                   onClick={() => setShowPalette(true)}
@@ -44,11 +65,7 @@ const App: React.FC = () => {
                 </IconButton>
               </Box>
             )}
-            {showPalette ? (
-              <PaletteView onBack={() => setShowPalette(false)} />
-            ) : (
-              <HelloWorldCard onButtonClick={handleClick} />
-            )}
+            {renderMainContent()}
           </Box>
         </Box>
       </Box>
