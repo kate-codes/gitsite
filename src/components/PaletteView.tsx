@@ -20,9 +20,11 @@ const PaletteView: React.FC<PaletteViewProps> = ({ onBack }) => {
         borderRadius: 2,
       }}
     >
-      <Button startIcon={<ArrowBackIcon />} onClick={onBack} sx={{ mb: 3 }} variant='outlined'>
-        Back
-      </Button>
+      <Box sx={{ textAlign: 'left' }}>
+        <Button startIcon={<ArrowBackIcon />} onClick={onBack} sx={{ mb: 3 }} variant='outlined'>
+          Back
+        </Button>
+      </Box>
 
       <Typography variant='h4' component='h1' gutterBottom sx={{ marginBottom: 1 }}>
         {palette.name}

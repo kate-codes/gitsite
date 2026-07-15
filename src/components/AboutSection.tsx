@@ -9,7 +9,7 @@ const INLINE_LINKS = new Map<string, string>([
     "University of Washington's Intelligent Networks Laboratory",
     'https://depts.washington.edu/biocomp/people.html',
   ],
-  ['review and fork the basic project on GitHub Pages', 'https://github.com/kate-codes/gitsite'],
+  ['review and fork the project on GitHub Pages', 'https://github.com/kate-codes/Gitsite-Example'],
 ]);
 
 const renderParagraph = (raw: string): React.ReactNode => {

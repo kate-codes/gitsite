@@ -12,7 +12,31 @@ export const ABOUT_BIO = [
   'Kate Sprague is a Full-Stack Software Engineer and University of Washington Computer Science graduate. She combines a strong technical foundation in full-stack development with a background in design, security, and user experience.to build secure, scalable, and intuitive web applications.',
   'She specializes in developing modern full-stack solutions using React, TypeScript, JavaScript, Python, Java, C#, C++, and cloud-based technologies, with a focus on creating maintainable, accessible, and user-centered software.',
   "As a researcher with the University of Washington's Intelligent Networks Laboratory, Kate contributed to the BrainGrid academic software ecosystem by evaluating and integrating software engineering tools and development workflows to improve software quality, maintainability, collaboration, and long-term sustainability for scientific research applications.",
-  'This website was built with code Kate wrote. You can review and fork the basic project on GitHub Pages.',
+  'This website was built with code Kate wrote. You can review and fork the project on GitHub Pages.',
+];
+
+export const PROFESSIONAL_SUMMARY: Array<{ heading: string; body: string }> = [
+  {
+    heading: 'Senior Full-Stack Software Engineer',
+    body: 'who combines a strong classical backend-leaning Computer Science foundation, self-taught fronend-leaning expertise, deep AI research expertise, a passion for Security and background in Digital Media Arts to build robust, intuitive, user-centered, secure, and scalable AI-enabled web applications. Experienced in developing modern single-page applications using React, TypeScript, Java, Python, and .NET, delivering production-ready solutions across diverse industries with unique technical and business requirements.',
+  },
+  {
+    heading: 'Proven track record, diverse product experience',
+    body: 'in building and deploying greenfield production-grade AI systems, including Computer Vision enabled mobile apps, Agentic AI workflows, CNNs, auto-encoders to solve critical problems in health-tech and e-commerce.',
+  },
+  {
+    heading:
+      'Experienced in designing and leading development of multi-region, highly available API solutions',
+    body: 'for secure RESTful and GraphQL APIs with scalable data storage warehousing.',
+  },
+  {
+    heading: 'Proficient in software architecture for cloud platforms',
+    body: '(AWS, Google Cloud, Microsoft Azure) with hands-on experience in Compute, Networking, Containers, CDNs, Storage, and Serverless.',
+  },
+  {
+    heading: 'Specialist in frontend application development',
+    body: 'using HTML, CSS, Tailwind CSS, JavaScript, TypeScript, NodeJS, and major Frameworks like React, Redux, and React Native. Adept at using Tailwind CSS, Vite, and Webpack for efficient front-end build optimization.',
+  },
 ];
 
 export const CONTACT_INQUIRY_URL = '';

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Box, Divider, Link, Paper, Typography } from '@mui/material';
+import { Box, Button, Divider, Link, Paper, Typography } from '@mui/material';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import EmailIcon from '@mui/icons-material/Email';
 import {
@@ -29,7 +30,11 @@ const CONTACT_LINKS = new Map<string, { url: string; icon: React.ReactNode; labe
   ],
 ]);
 
-const ContactSection: React.FC = () => {
+interface ContactSectionProps {
+  onBack: () => void;
+}
+
+const ContactSection: React.FC<ContactSectionProps> = ({ onBack }) => {
   return (
     <Paper
       elevation={3}
@@ -41,6 +46,9 @@ const ContactSection: React.FC = () => {
         borderTop: `4px solid ${palette.colors.rosyTaupe.hex}`,
       }}
     >
+      <Button startIcon={<ArrowBackIcon />} onClick={onBack} sx={{ mb: 3 }} variant='outlined'>
+        Back
+      </Button>
       <Typography
         variant='h4'
         component='h2'

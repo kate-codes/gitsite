@@ -5,6 +5,8 @@ import NavBar from './components/NavBar';
 import AboutSection from './components/AboutSection';
 import ResumeSection from './components/ResumeSection';
 import ContactSection from './components/ContactSection';
+import ExperienceSection from './components/ExperienceSection';
+import ProjectsSection from './components/ProjectsSection';
 import { useHelloWorldClick } from './hooks/useHelloWorldClick';
 import { theme } from './theme/theme';
 import { GRADIENT_PRIMARY, GRADIENT_SECONDARY } from './constants';
@@ -29,8 +31,14 @@ const App: React.FC = () => {
     if (activeSection === 'Resume') {
       return <ResumeSection />;
     }
+    if (activeSection === 'Experience') {
+      return <ExperienceSection onBack={handleHomeClick} />;
+    }
+    if (activeSection === 'Projects') {
+      return <ProjectsSection onBack={handleHomeClick} />;
+    }
     if (activeSection === 'Contact') {
-      return <ContactSection />;
+      return <ContactSection onBack={handleHomeClick} />;
     }
     return <HelloWorldCard onButtonClick={handleClick} />;
   };
