@@ -9,5 +9,6 @@ export interface PaletteViewProps {
 
 export interface NavBarProps {
   onNavClick: (section: string) => void;
+  onHomeClick: () => void;
   activeSection: string;
 }

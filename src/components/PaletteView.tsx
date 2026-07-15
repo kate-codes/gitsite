@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Button, Typography, Paper } from '@mui/material';
+import { Box, Button, Tooltip, Typography, Paper } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { PaletteViewProps } from '../types';
 import { palette } from '../theme/palette';
@@ -8,6 +8,8 @@ import githubLogo from '../assets/images/github_logo.png';
 
 const PaletteView: React.FC<PaletteViewProps> = ({ onBack }) => {
   const colorList = Object.values(palette.colors);
+  const logoExplanation =
+    'This image was initially commissioned to show a comic of a cute "cat 5" disaster.';
 
   return (
     <Paper
@@ -31,31 +33,48 @@ const PaletteView: React.FC<PaletteViewProps> = ({ onBack }) => {
 
       <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(8, 1fr)', gap: 1, mb: 3 }}>
         {colorList.map((color) => (
-          <Box
-            key={color.hex}
-            sx={{
-              height: 72,
-              borderRadius: 1,
-              backgroundColor: `${color.hex}`,
-              border: '1px solid rgba(0,0,0,0.08)',
-            }}
-            title={`${color.name} #${color.hex}`}
-          />
+          <Box key={color.hex}>
+            <Box
+              sx={{
+                height: 72,
+                borderRadius: 1,
+                backgroundColor: `${color.hex}`,
+                border: '1px solid rgba(0,0,0,0.08)',
+              }}
+            />
+            <Typography
+              variant='caption'
+              display='block'
+              sx={{ mt: 0.5, color: 'text.secondary', lineHeight: 1.3 }}
+            >
+              {color.name}
+            </Typography>
+            <Typography
+              variant='caption'
+              display='block'
+              sx={{ color: 'text.disabled', fontFamily: 'monospace' }}
+            >
+              #{color.hex}
+            </Typography>
+          </Box>
         ))}
       </Box>
 
       <Box sx={{ mb: 3, textAlign: 'center' }}>
-        <img
-          src={githubLogo}
-          alt='Cat 5 Disaster illustration'
-          style={{
-            maxWidth: '100%',
-            height: 'auto',
-            maxHeight: 300,
-          }}
-        />
+        <Tooltip title={logoExplanation} arrow>
+          <img
+            src={githubLogo}
+            alt='Cat 5 Disaster illustration'
+            style={{
+              maxWidth: '100%',
+              height: 'auto',
+              maxHeight: 300,
+              cursor: 'help',
+            }}
+          />
+        </Tooltip>
         <Typography variant='body2' color='text.secondary' sx={{ mt: 1 }}>
-          Palette generated from this custom illustration  commission by the artist {' '}
+          Palette generated from this custom illustration commission by the artist{' '}
           <Box
             component='a'
             href='mailto:achmadyoungky3@gmail.com'
@@ -67,7 +86,6 @@ const PaletteView: React.FC<PaletteViewProps> = ({ onBack }) => {
           >
             Tee Spoon.
           </Box>
-
         </Typography>
       </Box>
 

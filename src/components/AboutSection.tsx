@@ -3,26 +3,37 @@ import { Paper, Typography, Link } from '@mui/material';
 import { DISPLAY_NAME, ABOUT_BIO } from '../constants';
 import { palette } from '../theme/palette';
 
-const UW_LAB_NAME = "University of Washington's Intelligent Networks Laboratory";
-const UW_LAB_URL = 'https://depts.washington.edu/biocomp/people.html';
+const INLINE_LINKS = new Map<string, string>([
+  [
+    "University of Washington's Intelligent Networks Laboratory",
+    'https://depts.washington.edu/biocomp/people.html',
+  ],
+  ['review and fork the basic project on GitHub Pages', 'https://github.com/kate-codes/gitsite'],
+]);
 
-const renderParagraph = (text: string) => {
-  const idx = text.indexOf(UW_LAB_NAME);
-  if (idx === -1) { return text; }
-  return (
-    <>
-      {text.slice(0, idx)}
-      <Link
-        href={UW_LAB_URL}
-        target='_blank'
-        rel='noopener noreferrer'
-        sx={{ color: palette.colors.terracottaClay.hex }}
-      >
-        {UW_LAB_NAME}
-      </Link>
-      {text.slice(idx + UW_LAB_NAME.length)}
-    </>
-  );
+const renderParagraph = (raw: string): React.ReactNode => {
+  let parts: React.ReactNode[] = [raw];
+  for (const [text, url] of INLINE_LINKS) {
+    parts = parts.flatMap((part) => {
+      if (typeof part !== 'string') { return [part]; }
+      const idx = part.indexOf(text);
+      if (idx === -1) { return [part]; }
+      return [
+        part.slice(0, idx),
+        <Link
+          key={url}
+          href={url}
+          target='_blank'
+          rel='noopener noreferrer'
+          sx={{ color: palette.colors.terracottaClay.hex }}
+        >
+          {text}
+        </Link>,
+        part.slice(idx + text.length),
+      ];
+    });
+  }
+  return <>{parts}</>;
 };
 
 const AboutSection: React.FC = () => {

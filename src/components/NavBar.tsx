@@ -6,9 +6,9 @@ import { DISPLAY_NAME } from '../constants';
 import { NavBarProps } from '../types';
 import '../styles/NavBar.css';
 
-const NAV_ITEMS = ['About', 'Experience', 'Projects', 'Contact'];
+const NAV_ITEMS = ['About', 'Resume', 'Experience', 'Projects', 'Contact'];
 
-const NavBar: React.FC<NavBarProps> = ({ onNavClick, activeSection }) => {
+const NavBar: React.FC<NavBarProps> = ({ onNavClick, onHomeClick, activeSection }) => {
   const nameRef = useRef<HTMLSpanElement>(null);
 
   useLayoutEffect(() => {
@@ -25,8 +25,18 @@ const NavBar: React.FC<NavBarProps> = ({ onNavClick, activeSection }) => {
   return (
     <AppBar position='static' elevation={2} sx={{ backgroundColor: palette.colors.ashBrown.hex }}>
       <Toolbar>
-        <Avatar src={githubLogo} alt='Home' sx={{ width: 36, height: 36, cursor: 'pointer' }} />
-        <span ref={nameRef} className='typewriter-name'>
+        <Avatar
+          src={githubLogo}
+          alt='Home'
+          onClick={onHomeClick}
+          sx={{ width: 36, height: 36, cursor: 'pointer' }}
+        />
+        <span
+          ref={nameRef}
+          className='typewriter-name'
+          onClick={onHomeClick}
+          style={{ cursor: 'pointer' }}
+        >
           {DISPLAY_NAME}
         </span>
         <Box sx={{ flexGrow: 1 }} />

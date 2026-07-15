@@ -1,13 +1,7 @@
 import React from 'react';
 import { Button, Typography, Paper } from '@mui/material';
 import { HelloWorldCardProps } from '../types';
-import {
-  APP_GREETING,
-  APP_DESCRIPTION,
-  APP_SUBTEXT,
-  APP_BUTTON_TEXT,
-  APP_HELP_TEXT,
-} from '../constants';
+import { APP_GREETING, APP_DESCRIPTION, APP_SUBTEXT, APP_BUTTON_TEXT } from '../constants';
 import { palette } from '../theme/palette';
 
 const HelloWorldCard: React.FC<HelloWorldCardProps> = ({ onButtonClick }) => {
@@ -30,9 +24,6 @@ const HelloWorldCard: React.FC<HelloWorldCardProps> = ({ onButtonClick }) => {
       <Typography variant='body2' paragraph sx={{ color: 'text.secondary' }}>
         {APP_SUBTEXT}
       </Typography>
-      <Typography variant='body2' color='text.secondary' paragraph>
-        {APP_HELP_TEXT}
-      </Typography>
       <Button
         variant='contained'
         size='large'
@@ -42,7 +33,7 @@ const HelloWorldCard: React.FC<HelloWorldCardProps> = ({ onButtonClick }) => {
           background: palette.colors.rosyTaupe.hex,
           '&:hover': {
             background: palette.colors.rosyTaupe.hex,
-          }
+          },
         }}
       >
         {APP_BUTTON_TEXT}
