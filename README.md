@@ -1,8 +1,8 @@
-# Hello World - React + GitHub Pages
+# Kate Sprague Simple Portfolio Gitsite - React + GitHub Pages
 
-A simple hello world React app hosted on GitHub Pages. 
+This project grew out of my simple [hello world React app](https://github.com/kate-codes/gitsite-example) hosted on GitHub Pages.
 
-See https://kate-codes.github.io/Gitsite-Example/ for example of what this looks like forked.
+See https://kate-codes.github.io/gitsite for the actual build.
 
 
 With deployer GHA!* (*repo must be public for it to run free, and is not configured for this repo as it is an example.)
