@@ -4,6 +4,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import EmailIcon from '@mui/icons-material/Email';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import { useNavigate } from 'react-router-dom';
 import {
   CONTACT_EMAIL_URL,
   CONTACT_GITHUB_URL,
@@ -40,11 +41,9 @@ const CONTACT_LINKS = new Map<string, { url: string; icon: React.ReactNode; labe
   ],
 ]);
 
-interface ContactSectionProps {
-  onBack: () => void;
-}
+const ContactSection: React.FC = () => {
+  const navigate = useNavigate();
 
-const ContactSection: React.FC<ContactSectionProps> = ({ onBack }) => {
   return (
     <Paper
       elevation={3}
@@ -56,7 +55,12 @@ const ContactSection: React.FC<ContactSectionProps> = ({ onBack }) => {
         borderTop: `4px solid ${palette.colors.rosyTaupe.hex}`,
       }}
     >
-      <Button startIcon={<ArrowBackIcon />} onClick={onBack} sx={{ mb: 3 }} variant='outlined'>
+      <Button
+        startIcon={<ArrowBackIcon />}
+        onClick={() => navigate(-1)}
+        sx={{ mb: 3 }}
+        variant='outlined'
+      >
         Back
       </Button>
       <Typography

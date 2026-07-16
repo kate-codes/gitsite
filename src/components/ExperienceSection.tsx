@@ -1,13 +1,12 @@
 import React from 'react';
 import { Button, Paper, Typography } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { useNavigate } from 'react-router-dom';
 import { palette } from '../theme/palette';
 
-interface ExperienceSectionProps {
-  onBack: () => void;
-}
+const ExperienceSection: React.FC = () => {
+  const navigate = useNavigate();
 
-const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onBack }) => {
   return (
     <Paper
       elevation={3}
@@ -19,7 +18,12 @@ const ExperienceSection: React.FC<ExperienceSectionProps> = ({ onBack }) => {
         borderTop: `4px solid ${palette.colors.rosyTaupe.hex}`,
       }}
     >
-      <Button startIcon={<ArrowBackIcon />} onClick={onBack} sx={{ mb: 3 }} variant='outlined'>
+      <Button
+        startIcon={<ArrowBackIcon />}
+        onClick={() => navigate(-1)}
+        sx={{ mb: 3 }}
+        variant='outlined'
+      >
         Back
       </Button>
       <Typography

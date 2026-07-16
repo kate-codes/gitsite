@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 import { Box, ThemeProvider } from '@mui/material';
 import HelloWorldCard from './components/HelloWorldCard';
 import NavBar from './components/NavBar';
@@ -14,43 +15,11 @@ import './styles/App.css';
 
 const App: React.FC = () => {
   const { handleClick } = useHelloWorldClick();
-  const [activeSection, setActiveSection] = useState('');
-
-  const handleNavClick = (section: string) => {
-    setActiveSection((prev) => (prev === section ? '' : section));
-  };
-
-  const handleHomeClick = () => {
-    setActiveSection('');
-  };
-
-  const renderMainContent = () => {
-    if (activeSection === 'About') {
-      return <AboutSection />;
-    }
-    if (activeSection === 'Resume') {
-      return <ResumeSection />;
-    }
-    if (activeSection === 'Experience') {
-      return <ExperienceSection onBack={handleHomeClick} />;
-    }
-    if (activeSection === 'Projects') {
-      return <ProjectsSection onBack={handleHomeClick} />;
-    }
-    if (activeSection === 'Contact') {
-      return <ContactSection onBack={handleHomeClick} />;
-    }
-    return <HelloWorldCard onButtonClick={handleClick} />;
-  };
 
   return (
     <ThemeProvider theme={theme}>
       <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-        <NavBar
-          onNavClick={handleNavClick}
-          onHomeClick={handleHomeClick}
-          activeSection={activeSection}
-        />
+        <NavBar />
         <Box
           sx={{
             display: 'flex',
@@ -62,7 +31,14 @@ const App: React.FC = () => {
           }}
         >
           <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-            {renderMainContent()}
+            <Routes>
+              <Route path='/' element={<HelloWorldCard onButtonClick={handleClick} />} />
+              <Route path='/about' element={<AboutSection />} />
+              <Route path='/resume' element={<ResumeSection />} />
+              <Route path='/experience' element={<ExperienceSection />} />
+              <Route path='/projects' element={<ProjectsSection />} />
+              <Route path='/contact' element={<ContactSection />} />
+            </Routes>
           </Box>
         </Box>
       </Box>
