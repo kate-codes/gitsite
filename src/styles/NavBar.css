@@ -1,5 +1,7 @@
 .typewriter-name {
   display: inline-block;
+  min-width: 0;
+  max-width: 100%;
   overflow: hidden;
   white-space: nowrap;
   border-right: 2px solid rgba(254, 247, 236, 0.75);
@@ -12,6 +14,22 @@
   vertical-align: middle;
   animation: typewriter 2s steps(10) 0.5s 1 normal both,
     blinkTextCursor 500ms steps(10) 10 normal forwards;
+}
+
+@media (max-width: 900px) {
+  .typewriter-name {
+    font-size: 0.95rem;
+    max-width: none;
+    animation: none;
+    border-right: none;
+    width: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .typewriter-name {
+    font-size: 0.85rem;
+  }
 }
 
 @keyframes typewriter {

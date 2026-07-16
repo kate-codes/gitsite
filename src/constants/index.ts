@@ -60,6 +60,12 @@ export interface ColorTheme {
   footerText: string;
   footerHover: string;
   backButtonColor: string;
+  resumePaperBackground: string;
+  resumeHeadingText: string;
+  resumeSubheadingText: string;
+  resumeBodyText: string;
+  resumeMutedText: string;
+  resumeAccent: string;
 }
 
 export const LIGHT_MODE_COLORS: ColorTheme = {
@@ -73,17 +79,29 @@ export const LIGHT_MODE_COLORS: ColorTheme = {
   footerText: palette.colors.floralWhite.hex,
   footerHover: palette.colors.rosyTaupe.hex,
   backButtonColor: palette.colors.ashBrown.hex,
+  resumePaperBackground: palette.colors.floralWhite.hex,
+  resumeHeadingText: palette.colors.ashBrown.hex,
+  resumeSubheadingText: palette.colors.terracottaClay.hex,
+  resumeBodyText: palette.colors.black.hex,
+  resumeMutedText: palette.colors.smokyRose.hex,
+  resumeAccent: palette.colors.rosyTaupe.hex,
 };
 
 export const DARK_MODE_COLORS: ColorTheme = {
-  gradientPrimary: palette.colors.smokyRose.hex,
-  gradientSecondary: palette.colors.dustyRose.hex,
+  gradientPrimary: palette.colors.ashBrown.hex,
+  gradientSecondary: palette.colors.terracottaClay.hex,
   websiteBackground: palette.colors.black.hex,
-  headerBackground: palette.colors.terracottaClay.hex,
+  headerBackground: palette.colors.black.hex,
   headerText: palette.colors.floralWhite.hex,
-  headerAccent: palette.colors.dustyRose.hex,
-  footerBackground: palette.colors.terracottaClay.hex,
+  headerAccent: palette.colors.rosyTaupe.hex,
+  footerBackground: palette.colors.black.hex,
   footerText: palette.colors.floralWhite.hex,
-  footerHover: palette.colors.dustyRose.hex,
+  footerHover: palette.colors.rosyTaupe.hex,
   backButtonColor: palette.colors.floralWhite.hex,
+  resumePaperBackground: palette.colors.ashBrown.hex,
+  resumeHeadingText: palette.colors.floralWhite.hex,
+  resumeSubheadingText: palette.colors.linen.hex,
+  resumeBodyText: palette.colors.floralWhite.hex,
+  resumeMutedText: palette.colors.linen.hex,
+  resumeAccent: palette.colors.rosyTaupe.hex,
 };

@@ -7,9 +7,11 @@ import {
   RESUME_HEADLINE,
   RESUME_TAGLINE,
 } from '../constants';
-import { palette } from '../theme/palette';
+import { useColorTheme } from '../context/ColorThemeContext';
 
 const ResumeSection: React.FC = () => {
+  const { colors } = useColorTheme();
+
   return (
     <Paper
       elevation={3}
@@ -18,50 +20,48 @@ const ResumeSection: React.FC = () => {
         maxWidth: 800,
         width: '100%',
         borderRadius: 2,
-        borderTop: `4px solid ${palette.colors.rosyTaupe.hex}`,
+        backgroundColor: colors.resumePaperBackground,
+        borderTop: `4px solid ${colors.resumeAccent}`,
       }}
     >
       <Typography
         variant='h4'
         component='h1'
-        sx={{ color: palette.colors.ashBrown.hex, fontWeight: 700 }}
+        sx={{ color: colors.resumeHeadingText, fontWeight: 700 }}
       >
         {DISPLAY_NAME}
       </Typography>
 
       <Typography
         variant='subtitle1'
-        sx={{ color: palette.colors.terracottaClay.hex, fontWeight: 600, mt: 0.5 }}
+        sx={{ color: colors.resumeSubheadingText, fontWeight: 600, mt: 0.5 }}
       >
         {RESUME_HEADLINE}
       </Typography>
 
-      <Typography variant='body2' sx={{ color: palette.colors.smokyRose.hex, mt: 0.5 }}>
+      <Typography variant='body2' sx={{ color: colors.resumeMutedText, mt: 0.5 }}>
         {RESUME_AVAILABILITY}
       </Typography>
 
-      <Divider sx={{ my: 2, borderColor: palette.colors.rosyTaupe.hex }} />
+      <Divider sx={{ my: 2, borderColor: colors.resumeAccent }} />
 
       <Box
         sx={{
-          borderLeft: `3px solid ${palette.colors.rosyTaupe.hex}`,
+          borderLeft: `3px solid ${colors.resumeAccent}`,
           pl: 2,
         }}
       >
         <Typography
           variant='body1'
-          sx={{ color: palette.colors.black.hex, fontStyle: 'italic', lineHeight: 1.8 }}
+          sx={{ color: colors.resumeBodyText, fontStyle: 'italic', lineHeight: 1.8 }}
         >
           {RESUME_TAGLINE}
         </Typography>
       </Box>
 
-      <Divider sx={{ my: 2, borderColor: palette.colors.rosyTaupe.hex }} />
+      <Divider sx={{ my: 2, borderColor: colors.resumeAccent }} />
 
-      <Typography
-        variant='h6'
-        sx={{ color: palette.colors.ashBrown.hex, fontWeight: 700, mb: 1.5 }}
-      >
+      <Typography variant='h6' sx={{ color: colors.resumeHeadingText, fontWeight: 700, mb: 1.5 }}>
         Professional Summary
       </Typography>
 
@@ -71,7 +71,7 @@ const ResumeSection: React.FC = () => {
             component='li'
             key={i}
             sx={{
-              color: palette.colors.black.hex,
+              color: colors.resumeBodyText,
               lineHeight: 1.8,
               mb: i < PROFESSIONAL_SUMMARY.length - 1 ? 1.5 : 0,
             }}
@@ -79,7 +79,7 @@ const ResumeSection: React.FC = () => {
             <Typography variant='body1' component='span'>
               <Typography
                 component='span'
-                sx={{ fontWeight: 700, color: palette.colors.ashBrown.hex }}
+                sx={{ fontWeight: 700, color: colors.resumeHeadingText }}
               >
                 {heading}
               </Typography>{' '}
