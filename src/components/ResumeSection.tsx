@@ -20,7 +20,7 @@ const ResumeSection: React.FC = () => {
         maxWidth: 800,
         width: '100%',
         borderRadius: 2,
-        backgroundColor: colors.resumePaperBackground,
+        backgroundColor: colors.paperBackground,
         borderTop: `4px solid ${colors.resumeAccent}`,
       }}
     >

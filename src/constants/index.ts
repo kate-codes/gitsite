@@ -53,6 +53,10 @@ export interface ColorTheme {
   gradientPrimary: string;
   gradientSecondary: string;
   websiteBackground: string;
+  defaultText: string;
+  linkColor: string;
+  cardHeadingText: string;
+  cardAccentBorder: string; // Top border for cards
   headerBackground: string;
   headerText: string;
   headerAccent: string;
@@ -60,7 +64,7 @@ export interface ColorTheme {
   footerText: string;
   footerHover: string;
   backButtonColor: string;
-  resumePaperBackground: string;
+  paperBackground: string;
   resumeHeadingText: string;
   resumeSubheadingText: string;
   resumeBodyText: string;
@@ -72,6 +76,10 @@ export const LIGHT_MODE_COLORS: ColorTheme = {
   gradientPrimary: palette.colors.linen.hex,
   gradientSecondary: palette.colors.floralWhite.hex,
   websiteBackground: palette.colors.floralWhite.hex,
+  defaultText: palette.colors.black.hex,
+  linkColor: palette.colors.terracottaClay.hex,
+  cardHeadingText: palette.colors.ashBrown.hex,
+  cardAccentBorder: palette.colors.rosyTaupe.hex,
   headerBackground: palette.colors.rosyTaupe.hex,
   headerText: palette.colors.floralWhite.hex,
   headerAccent: palette.colors.rosyTaupe.hex,
@@ -79,7 +87,7 @@ export const LIGHT_MODE_COLORS: ColorTheme = {
   footerText: palette.colors.floralWhite.hex,
   footerHover: palette.colors.rosyTaupe.hex,
   backButtonColor: palette.colors.ashBrown.hex,
-  resumePaperBackground: palette.colors.floralWhite.hex,
+  paperBackground: palette.colors.white.hex,
   resumeHeadingText: palette.colors.ashBrown.hex,
   resumeSubheadingText: palette.colors.terracottaClay.hex,
   resumeBodyText: palette.colors.black.hex,
@@ -91,6 +99,10 @@ export const DARK_MODE_COLORS: ColorTheme = {
   gradientPrimary: palette.colors.ashBrown.hex,
   gradientSecondary: palette.colors.terracottaClay.hex,
   websiteBackground: palette.colors.black.hex,
+  defaultText: palette.colors.floralWhite.hex,
+  linkColor: palette.colors.rosyTaupe.hex,
+  cardHeadingText: palette.colors.floralWhite.hex,
+  cardAccentBorder: palette.colors.rosyTaupe.hex,
   headerBackground: palette.colors.black.hex,
   headerText: palette.colors.floralWhite.hex,
   headerAccent: palette.colors.rosyTaupe.hex,
@@ -98,7 +110,7 @@ export const DARK_MODE_COLORS: ColorTheme = {
   footerText: palette.colors.floralWhite.hex,
   footerHover: palette.colors.rosyTaupe.hex,
   backButtonColor: palette.colors.floralWhite.hex,
-  resumePaperBackground: palette.colors.ashBrown.hex,
+  paperBackground: palette.colors.ashBrown.hex,
   resumeHeadingText: palette.colors.floralWhite.hex,
   resumeSubheadingText: palette.colors.linen.hex,
   resumeBodyText: palette.colors.floralWhite.hex,

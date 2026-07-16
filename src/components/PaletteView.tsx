@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box, Button, Tooltip, Typography, Paper } from '@mui/material';
+import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import { PaletteViewProps } from '../types';
 import { palette } from '../theme/palette';
 import { useColorTheme } from '../context/ColorThemeContext';
@@ -11,51 +12,72 @@ const PaletteView: React.FC<PaletteViewProps> = ({ onBack }) => {
   const colorList = Object.values(palette.colors);
   const logoExplanation =
     'This image was initially commissioned to show a comic of a cute "cat 5" disaster.';
+  const downloadButtonText = 'Download Palette as CSV';
 
   return (
     <Paper
       elevation={3}
       sx={{
-        padding: 4,
+        padding: { xs: 4, sm: 6 },
+        maxWidth: 860,
+        width: '100%',
         textAlign: 'center',
         borderRadius: 2,
+        backgroundColor: colors.paperBackground,
+        borderTop: `4px solid ${colors.cardAccentBorder}`,
       }}
     >
       <Box sx={{ textAlign: 'left' }}>
         <BackButton onClick={onBack} />
       </Box>
 
-      <Typography variant='h4' component='h1' gutterBottom sx={{ marginBottom: 1 }}>
+      <Typography
+        variant='h4'
+        component='h1'
+        gutterBottom
+        sx={{ marginBottom: 1, color: colors.cardHeadingText }}
+      >
         {palette.name}
       </Typography>
-      <Typography variant='body2' color='text.secondary' paragraph>
+      <Typography variant='body2' sx={{ color: colors.defaultText, opacity: 0.7, mb: 2 }}>
         Explore the exported color formats for this palette.
       </Typography>
 
-      <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(8, 1fr)', gap: 1, mb: 3 }}>
+      <Box
+        sx={{
+          display: 'grid',
+          gridTemplateColumns: {
+            xs: 'repeat(3, 1fr)',
+            sm: 'repeat(5, 1fr)',
+            md: `repeat(${colorList.length}, 1fr)`,
+          },
+          gap: 1,
+          mb: 3,
+        }}
+      >
         {colorList.map((color) => (
           <Box key={color.hex}>
             <Box
               sx={{
                 height: 72,
                 borderRadius: 1,
-                backgroundColor: `${color.hex}`,
+                backgroundColor: color.hex,
                 border: '1px solid rgba(0,0,0,0.08)',
               }}
             />
             <Typography
               variant='caption'
               display='block'
-              sx={{ mt: 0.5, color: 'text.secondary', lineHeight: 1.3 }}
+              sx={{ mt: 0.5, color: colors.defaultText, opacity: 0.75, lineHeight: 1.3 }}
             >
               {color.name}
             </Typography>
             <Typography
               variant='caption'
               display='block'
-              sx={{ color: 'text.disabled', fontFamily: 'monospace' }}
+              sx={{ color: colors.defaultText, opacity: 0.5, fontFamily: 'monospace' }}
             >
-              #{color.hex}
+              {color.hex}
             </Typography>
           </Box>
         ))}
@@ -74,14 +96,14 @@ const PaletteView: React.FC<PaletteViewProps> = ({ onBack }) => {
             }}
           />
         </Tooltip>
-        <Typography variant='body2' color='text.secondary' sx={{ mt: 1 }}>
+        <Typography variant='body2' sx={{ color: colors.defaultText, opacity: 0.7, mt: 1 }}>
           Palette generated from this custom illustration commission by the artist{' '}
           <Box
             component='a'
             href='mailto:achmadyoungky3@gmail.com'
             sx={{
               textDecoration: 'none',
-              color: 'inherit',
+              color: colors.linkColor,
               '&:hover': { textDecoration: 'underline' },
             }}
           >
@@ -93,7 +115,7 @@ const PaletteView: React.FC<PaletteViewProps> = ({ onBack }) => {
       <Box
         sx={{
           textAlign: 'left',
-          backgroundColor: '#f7f0ea',
+          backgroundColor: 'rgba(0,0,0,0.06)',
           borderRadius: 2,
           p: 2,
           mb: 2,
@@ -101,55 +123,64 @@ const PaletteView: React.FC<PaletteViewProps> = ({ onBack }) => {
           fontSize: '0.85rem',
           whiteSpace: 'pre-wrap',
           wordBreak: 'break-word',
+          color: colors.defaultText,
         }}
       >
-        <Typography component='div' sx={{ mb: 1, fontWeight: 600 }}>
+        <Typography component='div' sx={{ mb: 1, fontWeight: 600, color: colors.cardHeadingText }}>
           CSV
         </Typography>
         <Typography component='div' sx={{ mb: 1 }}>
           {palette.csv}
         </Typography>
-        <Typography component='div' sx={{ mb: 1, fontWeight: 600 }}>
+        <Typography component='div' sx={{ mb: 1, fontWeight: 600, color: colors.cardHeadingText }}>
           Hex List
         </Typography>
         <Typography component='div' sx={{ mb: 1 }}>
           {palette.withHash}
         </Typography>
-        <Typography component='div' sx={{ mb: 1, fontWeight: 600 }}>
+        <Typography component='div' sx={{ mb: 1, fontWeight: 600, color: colors.cardHeadingText }}>
           JSON Array
         </Typography>
         <Typography component='div' sx={{ mb: 1 }}>
           {palette.array}
         </Typography>
-        <Typography component='div' sx={{ mb: 1, fontWeight: 600 }}>
+        <Typography component='div' sx={{ mb: 1, fontWeight: 600, color: colors.cardHeadingText }}>
           JSON Object
         </Typography>
         <Typography component='div' sx={{ mb: 1 }}>
           {palette.object}
         </Typography>
-        <Typography component='div' sx={{ mb: 1, fontWeight: 600 }}>
+        <Typography component='div' sx={{ mb: 1, fontWeight: 600, color: colors.cardHeadingText }}>
           Extended JSON
         </Typography>
         <Typography component='div' sx={{ mb: 1 }}>
           {palette.extendedArray}
         </Typography>
-        <Typography component='div' sx={{ fontWeight: 600 }}>
+        <Typography component='div' sx={{ fontWeight: 600, color: colors.cardHeadingText }}>
           XML
         </Typography>
         <Typography component='div'>{palette.xml}</Typography>
       </Box>
 
       <Button
-        variant='contained'
+        startIcon={<FileDownloadIcon />}
+        variant='outlined'
         size='large'
         sx={{
           marginTop: 1,
           width: '100%',
-          background: colors.gradientPrimary,
+          color: colors.backButtonColor,
+          borderColor: colors.backButtonColor,
+          '& .MuiButton-startIcon': { color: colors.backButtonColor },
+          '&:hover': {
+            borderColor: colors.backButtonColor,
+            color: colors.backButtonColor,
+            backgroundColor: `${colors.backButtonColor}20`,
+          },
         }}
         onClick={() => navigator.clipboard.writeText(palette.csv)}
       >
-        Want this Palette? Copy the CSV to your clipboard!
+        {downloadButtonText}
       </Button>
     </Paper>
   );

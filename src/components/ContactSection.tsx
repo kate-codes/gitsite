@@ -12,7 +12,7 @@ import {
   DISPLAY_NAME,
 } from '../constants';
 import BackButton from './BackButton';
-import { palette } from '../theme/palette';
+import { useColorTheme } from '../context/ColorThemeContext';
 
 const CONTACT_LINKS = new Map<string, { url: string; icon: React.ReactNode; label: string }>([
   [
@@ -43,6 +43,7 @@ const CONTACT_LINKS = new Map<string, { url: string; icon: React.ReactNode; labe
 
 const ContactSection: React.FC = () => {
   const navigate = useNavigate();
+  const { colors } = useColorTheme();
 
   return (
     <Paper
@@ -52,22 +53,23 @@ const ContactSection: React.FC = () => {
         maxWidth: 520,
         width: '100%',
         borderRadius: 2,
-        borderTop: `4px solid ${palette.colors.rosyTaupe.hex}`,
+        backgroundColor: colors.paperBackground,
+        borderTop: `4px solid ${colors.cardAccentBorder}`,
       }}
     >
       <BackButton onClick={() => navigate(-1)} />
       <Typography
         variant='h4'
         component='h2'
-        sx={{ color: palette.colors.ashBrown.hex, fontWeight: 700, marginBottom: 1 }}
+        sx={{ color: colors.cardHeadingText, fontWeight: 700, marginBottom: 1 }}
       >
         Contact
       </Typography>
-      <Typography variant='body2' sx={{ color: palette.colors.smokyRose.hex, marginBottom: 3 }}>
+      <Typography variant='body2' sx={{ color: colors.resumeMutedText, marginBottom: 3 }}>
         Get in touch with {DISPLAY_NAME}
       </Typography>
 
-      <Divider sx={{ mb: 3, borderColor: palette.colors.rosyTaupe.hex }} />
+      <Divider sx={{ mb: 3, borderColor: colors.cardAccentBorder }} />
 
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
         {Array.from(CONTACT_LINKS.entries()).map(([name, { url, icon, label }]) =>
@@ -85,10 +87,10 @@ const ContactSection: React.FC = () => {
                 gap: 1.5,
                 padding: 2,
                 borderRadius: 1,
-                border: `1px solid ${palette.colors.rosyTaupe.hex}`,
-                color: palette.colors.ashBrown.hex,
+                border: `1px solid ${colors.cardAccentBorder}`,
+                color: colors.cardHeadingText,
                 transition: 'background-color 0.2s',
-                '&:hover': { backgroundColor: `${palette.colors.rosyTaupe.hex}20` },
+                '&:hover': { backgroundColor: `${colors.cardAccentBorder}20` },
               }}
             >
               {icon}

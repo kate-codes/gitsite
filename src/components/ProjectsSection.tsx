@@ -2,10 +2,11 @@ import React from 'react';
 import { Paper, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import BackButton from './BackButton';
-import { palette } from '../theme/palette';
+import { useColorTheme } from '../context/ColorThemeContext';
 
 const ProjectsSection: React.FC = () => {
   const navigate = useNavigate();
+  const { colors } = useColorTheme();
 
   return (
     <Paper
@@ -15,18 +16,19 @@ const ProjectsSection: React.FC = () => {
         maxWidth: 640,
         width: '100%',
         borderRadius: 2,
-        borderTop: `4px solid ${palette.colors.rosyTaupe.hex}`,
+        backgroundColor: colors.paperBackground,
+        borderTop: `4px solid ${colors.cardAccentBorder}`,
       }}
     >
       <BackButton onClick={() => navigate(-1)} />
       <Typography
         variant='h4'
         component='h2'
-        sx={{ color: palette.colors.ashBrown.hex, fontWeight: 700, marginBottom: 2 }}
+        sx={{ color: colors.cardHeadingText, fontWeight: 700, marginBottom: 2 }}
       >
         Projects
       </Typography>
-      <Typography variant='body1' sx={{ color: palette.colors.black.hex, lineHeight: 1.8 }}>
+      <Typography variant='body1' sx={{ color: colors.defaultText, lineHeight: 1.8 }}>
         Under construction — please check back later.
       </Typography>
     </Paper>

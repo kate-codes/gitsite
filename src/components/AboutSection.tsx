@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Paper, Typography, Link } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 import { DISPLAY_NAME, ABOUT_BIO } from '../constants';
-import { palette } from '../theme/palette';
-import PaletteView from './PaletteView';
+import { useColorTheme } from '../context/ColorThemeContext';
 
 const INLINE_LINKS = new Map<string, string>([
   [
@@ -12,7 +12,7 @@ const INLINE_LINKS = new Map<string, string>([
   ['review and fork the project on GitHub Pages', 'https://github.com/kate-codes/Gitsite-Example'],
 ]);
 
-const renderParagraph = (raw: string): React.ReactNode => {
+const renderParagraph = (raw: string, linkColor: string): React.ReactNode => {
   let parts: React.ReactNode[] = [raw];
   for (const [text, url] of INLINE_LINKS) {
     parts = parts.flatMap((part) => {
@@ -30,7 +30,7 @@ const renderParagraph = (raw: string): React.ReactNode => {
           href={url}
           target='_blank'
           rel='noopener noreferrer'
-          sx={{ color: palette.colors.terracottaClay.hex }}
+          sx={{ color: linkColor }}
         >
           {text}
         </Link>,
@@ -42,11 +42,8 @@ const renderParagraph = (raw: string): React.ReactNode => {
 };
 
 const AboutSection: React.FC = () => {
-  const [showPalette, setShowPalette] = useState(false);
-
-  if (showPalette) {
-    return <PaletteView onBack={() => setShowPalette(false)} />;
-  }
+  const navigate = useNavigate();
+  const { colors } = useColorTheme();
 
   return (
     <Paper
@@ -56,13 +53,14 @@ const AboutSection: React.FC = () => {
         maxWidth: 640,
         width: '100%',
         borderRadius: 2,
-        borderTop: `4px solid ${palette.colors.rosyTaupe.hex}`,
+        backgroundColor: colors.paperBackground,
+        borderTop: `4px solid ${colors.cardAccentBorder}`,
       }}
     >
       <Typography
         variant='h4'
         component='h2'
-        sx={{ color: palette.colors.ashBrown.hex, fontWeight: 700, marginBottom: 2 }}
+        sx={{ color: colors.cardHeadingText, fontWeight: 700, marginBottom: 2 }}
       >
         {DISPLAY_NAME}
       </Typography>
@@ -73,21 +71,21 @@ const AboutSection: React.FC = () => {
             key={i}
             variant='body1'
             sx={{
-              color: palette.colors.black.hex,
+              color: colors.defaultText,
               lineHeight: 1.8,
               marginBottom: isLast ? 0 : 2,
             }}
           >
-            {renderParagraph(paragraph)}
+            {renderParagraph(paragraph, colors.linkColor)}
             {isLast && (
               <>
                 {' '}
                 Here is the{' '}
                 <Link
                   component='button'
-                  onClick={() => setShowPalette(true)}
+                  onClick={() => navigate('/palette')}
                   sx={{
-                    color: palette.colors.terracottaClay.hex,
+                    color: colors.linkColor,
                     verticalAlign: 'baseline',
                     cursor: 'pointer',
                     background: 'none',
