@@ -49,5 +49,41 @@ export const RESUME_AVAILABILITY =
   'Local to Seattle, Available for Hybrid, Relocation, or Remote Work';
 export const RESUME_TAGLINE = 'Building software that users love and teams can scale with.';
 
-export const GRADIENT_PRIMARY = palette.colors.rosyTaupe.hex;
-export const GRADIENT_SECONDARY = palette.colors.linen.hex;
+export interface ColorTheme {
+  gradientPrimary: string;
+  gradientSecondary: string;
+  websiteBackground: string;
+  headerBackground: string;
+  headerText: string;
+  headerAccent: string;
+  footerBackground: string;
+  footerText: string;
+  footerHover: string;
+  backButtonColor: string;
+}
+
+export const LIGHT_MODE_COLORS: ColorTheme = {
+  gradientPrimary: palette.colors.linen.hex,
+  gradientSecondary: palette.colors.floralWhite.hex,
+  websiteBackground: palette.colors.floralWhite.hex,
+  headerBackground: palette.colors.rosyTaupe.hex,
+  headerText: palette.colors.floralWhite.hex,
+  headerAccent: palette.colors.rosyTaupe.hex,
+  footerBackground: palette.colors.rosyTaupe.hex,
+  footerText: palette.colors.floralWhite.hex,
+  footerHover: palette.colors.rosyTaupe.hex,
+  backButtonColor: palette.colors.ashBrown.hex,
+};
+
+export const DARK_MODE_COLORS: ColorTheme = {
+  gradientPrimary: palette.colors.smokyRose.hex,
+  gradientSecondary: palette.colors.dustyRose.hex,
+  websiteBackground: palette.colors.black.hex,
+  headerBackground: palette.colors.terracottaClay.hex,
+  headerText: palette.colors.floralWhite.hex,
+  headerAccent: palette.colors.dustyRose.hex,
+  footerBackground: palette.colors.terracottaClay.hex,
+  footerText: palette.colors.floralWhite.hex,
+  footerHover: palette.colors.dustyRose.hex,
+  backButtonColor: palette.colors.floralWhite.hex,
+};

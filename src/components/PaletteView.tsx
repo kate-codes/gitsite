@@ -1,12 +1,13 @@
 import React from 'react';
 import { Box, Button, Tooltip, Typography, Paper } from '@mui/material';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { PaletteViewProps } from '../types';
 import { palette } from '../theme/palette';
-import { GRADIENT_PRIMARY, GRADIENT_SECONDARY } from '../constants';
+import { useColorTheme } from '../context/ColorThemeContext';
 import githubLogo from '../assets/images/github_logo.png';
+import BackButton from './BackButton';
 
 const PaletteView: React.FC<PaletteViewProps> = ({ onBack }) => {
+  const { colors } = useColorTheme();
   const colorList = Object.values(palette.colors);
   const logoExplanation =
     'This image was initially commissioned to show a comic of a cute "cat 5" disaster.';
@@ -21,9 +22,7 @@ const PaletteView: React.FC<PaletteViewProps> = ({ onBack }) => {
       }}
     >
       <Box sx={{ textAlign: 'left' }}>
-        <Button startIcon={<ArrowBackIcon />} onClick={onBack} sx={{ mb: 3 }} variant='outlined'>
-          Back
-        </Button>
+        <BackButton onClick={onBack} />
       </Box>
 
       <Typography variant='h4' component='h1' gutterBottom sx={{ marginBottom: 1 }}>
@@ -146,7 +145,7 @@ const PaletteView: React.FC<PaletteViewProps> = ({ onBack }) => {
         sx={{
           marginTop: 1,
           width: '100%',
-          background: GRADIENT_PRIMARY,
+          background: colors.gradientPrimary,
         }}
         onClick={() => navigator.clipboard.writeText(palette.csv)}
       >

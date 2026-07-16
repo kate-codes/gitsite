@@ -1,7 +1,7 @@
 import React from 'react';
-import { Button, Paper, Typography } from '@mui/material';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { Paper, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import BackButton from './BackButton';
 import { palette } from '../theme/palette';
 
 const ExperienceSection: React.FC = () => {
@@ -18,14 +18,7 @@ const ExperienceSection: React.FC = () => {
         borderTop: `4px solid ${palette.colors.rosyTaupe.hex}`,
       }}
     >
-      <Button
-        startIcon={<ArrowBackIcon />}
-        onClick={() => navigate(-1)}
-        sx={{ mb: 3 }}
-        variant='outlined'
-      >
-        Back
-      </Button>
+      <BackButton onClick={() => navigate(-1)} />
       <Typography
         variant='h4'
         component='h2'

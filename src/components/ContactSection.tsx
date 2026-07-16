@@ -1,6 +1,5 @@
 import React from 'react';
-import { Box, Button, Divider, Link, Paper, Typography } from '@mui/material';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { Box, Divider, Link, Paper, Typography } from '@mui/material';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import EmailIcon from '@mui/icons-material/Email';
 import GitHubIcon from '@mui/icons-material/GitHub';
@@ -12,6 +11,7 @@ import {
   CONTACT_LINKEDIN_URL,
   DISPLAY_NAME,
 } from '../constants';
+import BackButton from './BackButton';
 import { palette } from '../theme/palette';
 
 const CONTACT_LINKS = new Map<string, { url: string; icon: React.ReactNode; label: string }>([
@@ -55,14 +55,7 @@ const ContactSection: React.FC = () => {
         borderTop: `4px solid ${palette.colors.rosyTaupe.hex}`,
       }}
     >
-      <Button
-        startIcon={<ArrowBackIcon />}
-        onClick={() => navigate(-1)}
-        sx={{ mb: 3 }}
-        variant='outlined'
-      >
-        Back
-      </Button>
+      <BackButton onClick={() => navigate(-1)} />
       <Typography
         variant='h4'
         component='h2'

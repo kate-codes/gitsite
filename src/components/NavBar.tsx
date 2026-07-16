@@ -1,9 +1,11 @@
 import React, { useRef, useLayoutEffect } from 'react';
-import { AppBar, Toolbar, Box, Button, Avatar } from '@mui/material';
+import { AppBar, Toolbar, Box, Button, Avatar, Switch } from '@mui/material';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
 import { NavLink, useNavigate } from 'react-router-dom';
 import githubLogo from '../assets/images/github_logo.png';
-import { palette } from '../theme/palette';
 import { DISPLAY_NAME } from '../constants';
+import { useColorTheme } from '../context/ColorThemeContext';
 import '../styles/NavBar.css';
 
 const NAV_ITEMS = [
@@ -17,6 +19,7 @@ const NAV_ITEMS = [
 const NavBar: React.FC = () => {
   const nameRef = useRef<HTMLSpanElement>(null);
   const navigate = useNavigate();
+  const { isDarkMode, colors, toggleDarkMode } = useColorTheme();
 
   useLayoutEffect(() => {
     const el = nameRef.current;
@@ -29,7 +32,11 @@ const NavBar: React.FC = () => {
   }, []);
 
   return (
-    <AppBar position='static' elevation={2} sx={{ backgroundColor: palette.colors.ashBrown.hex }}>
+    <AppBar
+      position='static'
+      elevation={2}
+      sx={{ backgroundColor: colors.headerBackground, transition: 'background-color 0.3s ease' }}
+    >
       <Toolbar>
         <Avatar
           src={githubLogo}
@@ -51,15 +58,15 @@ const NavBar: React.FC = () => {
             {({ isActive }) => (
               <Button
                 sx={{
-                  color: palette.colors.floralWhite.hex,
+                  color: colors.headerText,
                   textTransform: 'none',
                   fontSize: '0.95rem',
                   fontWeight: isActive ? 700 : 400,
                   borderBottom: isActive
-                    ? `2px solid ${palette.colors.rosyTaupe.hex}`
+                    ? `2px solid ${colors.headerAccent}`
                     : '2px solid transparent',
                   borderRadius: 0,
-                  '&:hover': { backgroundColor: `${palette.colors.smokyRose.hex}40` },
+                  '&:hover': { backgroundColor: `${colors.headerAccent}40` },
                 }}
               >
                 {label}
@@ -67,6 +74,26 @@ const NavBar: React.FC = () => {
             )}
           </NavLink>
         ))}
+        <Box sx={{ display: 'flex', alignItems: 'center', ml: 1.5 }}>
+          <Brightness7Icon
+            sx={{ color: colors.headerText, fontSize: 18, opacity: isDarkMode ? 0.5 : 1 }}
+          />
+          <Switch
+            checked={isDarkMode}
+            onChange={toggleDarkMode}
+            size='small'
+            sx={{
+              mx: 0.25,
+              '& .MuiSwitch-switchBase.Mui-checked': { color: colors.headerAccent },
+              '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
+                backgroundColor: colors.headerAccent,
+              },
+            }}
+          />
+          <Brightness4Icon
+            sx={{ color: colors.headerText, fontSize: 18, opacity: isDarkMode ? 1 : 0.5 }}
+          />
+        </Box>
       </Toolbar>
     </AppBar>
   );

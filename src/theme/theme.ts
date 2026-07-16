@@ -1,13 +1,13 @@
 import { createTheme } from '@mui/material/styles';
-import { GRADIENT_PRIMARY, GRADIENT_SECONDARY } from '../constants';
+import { LIGHT_MODE_COLORS } from '../constants';
 
 export const theme = createTheme({
   palette: {
     primary: {
-      main: GRADIENT_PRIMARY,
+      main: LIGHT_MODE_COLORS.gradientPrimary,
     },
     secondary: {
-      main: GRADIENT_SECONDARY,
+      main: LIGHT_MODE_COLORS.gradientSecondary,
     },
     background: {
       default: '#F7F2EE',

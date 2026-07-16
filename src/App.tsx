@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import { Box, ThemeProvider } from '@mui/material';
 import HelloWorldCard from './components/HelloWorldCard';
 import NavBar from './components/NavBar';
+import Footer from './components/Footer';
 import AboutSection from './components/AboutSection';
 import ResumeSection from './components/ResumeSection';
 import ContactSection from './components/ContactSection';
@@ -10,40 +11,49 @@ import ExperienceSection from './components/ExperienceSection';
 import ProjectsSection from './components/ProjectsSection';
 import { useHelloWorldClick } from './hooks/useHelloWorldClick';
 import { theme } from './theme/theme';
-import { GRADIENT_PRIMARY, GRADIENT_SECONDARY } from './constants';
+import { ColorThemeProvider, useColorTheme } from './context/ColorThemeContext';
 import './styles/App.css';
 
-const App: React.FC = () => {
+const AppContent: React.FC = () => {
   const { handleClick } = useHelloWorldClick();
+  const { colors } = useColorTheme();
 
   return (
-    <ThemeProvider theme={theme}>
-      <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-        <NavBar />
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            flexGrow: 1,
-            background: `linear-gradient(180deg, ${GRADIENT_PRIMARY} 0%, ${GRADIENT_SECONDARY} 100%)`,
-            padding: 2,
-          }}
-        >
-          <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-            <Routes>
-              <Route path='/' element={<HelloWorldCard onButtonClick={handleClick} />} />
-              <Route path='/about' element={<AboutSection />} />
-              <Route path='/resume' element={<ResumeSection />} />
-              <Route path='/experience' element={<ExperienceSection />} />
-              <Route path='/projects' element={<ProjectsSection />} />
-              <Route path='/contact' element={<ContactSection />} />
-            </Routes>
-          </Box>
+    <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+      <NavBar />
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          flexGrow: 1,
+          background: `linear-gradient(180deg, ${colors.gradientPrimary} 0%, ${colors.websiteBackground} 100%)`,
+          padding: 2,
+          transition: 'background 0.3s ease',
+        }}
+      >
+        <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+          <Routes>
+            <Route path='/' element={<HelloWorldCard onButtonClick={handleClick} />} />
+            <Route path='/about' element={<AboutSection />} />
+            <Route path='/resume' element={<ResumeSection />} />
+            <Route path='/experience' element={<ExperienceSection />} />
+            <Route path='/projects' element={<ProjectsSection />} />
+            <Route path='/contact' element={<ContactSection />} />
+          </Routes>
         </Box>
       </Box>
-    </ThemeProvider>
+      <Footer />
+    </Box>
   );
 };
+
+const App: React.FC = () => (
+  <ThemeProvider theme={theme}>
+    <ColorThemeProvider>
+      <AppContent />
+    </ColorThemeProvider>
+  </ThemeProvider>
+);
 
 export default App;
