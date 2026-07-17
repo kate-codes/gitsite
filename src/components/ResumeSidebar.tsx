@@ -40,7 +40,7 @@ const ResumeSidebar: React.FC = () => {
       }}
     >
       <Typography variant='h6' sx={{ color: colors.resumeHeadingText, fontWeight: 700, mb: 2 }}>
-        At a Glance
+        At-a-glance
       </Typography>
 
       <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, mb: 2 }}>

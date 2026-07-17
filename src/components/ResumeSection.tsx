@@ -24,7 +24,9 @@ const ResumeSection: React.FC = () => {
         alignItems: 'flex-start',
       }}
     >
-      <ResumeSidebar />
+      <Box sx={{ order: { xs: 2, md: 1 }, width: { xs: '100%', md: 'auto' } }}>
+        <ResumeSidebar />
+      </Box>
       <Paper
         elevation={3}
         sx={{
@@ -34,6 +36,7 @@ const ResumeSection: React.FC = () => {
           borderRadius: 2,
           backgroundColor: colors.paperBackground,
           borderTop: `4px solid ${colors.cardAccentBorder}`,
+          order: { xs: 1, md: 2 },
         }}
       >
         <Typography
