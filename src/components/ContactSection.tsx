@@ -65,7 +65,7 @@ const ContactSection: React.FC = () => {
       >
         Contact
       </Typography>
-      <Typography variant='body2' sx={{ color: colors.resumeMutedText, marginBottom: 3 }}>
+      <Typography variant='body2' sx={{ color: colors.resumeSubheadingText, marginBottom: 3 }}>
         Get in touch with {DISPLAY_NAME}
       </Typography>
 

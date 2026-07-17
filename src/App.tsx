@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
-import { Box, ThemeProvider } from '@mui/material';
+import { Box } from '@mui/material';
 import HelloWorldCard from './components/HelloWorldCard';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
@@ -11,7 +11,6 @@ import ExperienceSection from './components/ExperienceSection';
 import ProjectsSection from './components/ProjectsSection';
 import PaletteView from './components/PaletteView';
 import { useHelloWorldClick } from './hooks/useHelloWorldClick';
-import { theme } from './theme/theme';
 import { ColorThemeProvider, useColorTheme } from './context/ColorThemeContext';
 import './styles/App.css';
 
@@ -57,11 +56,9 @@ const AppContent: React.FC = () => {
 };
 
 const App: React.FC = () => (
-  <ThemeProvider theme={theme}>
-    <ColorThemeProvider>
-      <AppContent />
-    </ColorThemeProvider>
-  </ThemeProvider>
+  <ColorThemeProvider>
+    <AppContent />
+  </ColorThemeProvider>
 );
 
 export default App;

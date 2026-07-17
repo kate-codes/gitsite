@@ -21,7 +21,7 @@ const ResumeSection: React.FC = () => {
         width: '100%',
         borderRadius: 2,
         backgroundColor: colors.paperBackground,
-        borderTop: `4px solid ${colors.resumeAccent}`,
+        borderTop: `4px solid ${colors.cardAccentBorder}`,
       }}
     >
       <Typography
@@ -39,7 +39,7 @@ const ResumeSection: React.FC = () => {
         {RESUME_HEADLINE}
       </Typography>
 
-      <Typography variant='body2' sx={{ color: colors.resumeMutedText, mt: 0.5 }}>
+      <Typography variant='body2' sx={{ color: colors.resumeSubheadingText, mt: 0.5 }}>
         {RESUME_AVAILABILITY}
       </Typography>
 
