@@ -3,6 +3,8 @@ import { Box, Collapse, Typography } from '@mui/material';
 import { useColorTheme } from '../context/ColorThemeContext';
 import { useTypewriterEffect } from '../hooks/useTypewriterEffect';
 
+const TRIANGLE_VERTICAL_OFFSET = '7px';
+
 interface Props {
   heading: string;
   body: string;
@@ -41,7 +43,7 @@ const ExpandableSummaryItem: React.FC<Props> = ({ heading, body, isLast }) => {
       >
         <Box
           sx={{
-            mt: '3px',
+            mt: TRIANGLE_VERTICAL_OFFSET,
             flexShrink: 0,
             fontSize: '0.7rem',
             color: colors.resumeAccent,
