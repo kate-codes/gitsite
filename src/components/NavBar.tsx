@@ -12,7 +12,6 @@ import {
   ListItemButton,
   ListItemText,
   useMediaQuery,
-  useTheme,
 } from '@mui/material';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import Brightness4Icon from '@mui/icons-material/Brightness4';

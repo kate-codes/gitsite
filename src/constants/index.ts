@@ -25,9 +25,8 @@ export const PROFESSIONAL_SUMMARY: Array<{ heading: string; body: string }> = [
     body: 'in building and deploying greenfield production-grade AI systems, including Computer Vision enabled mobile apps, Agentic AI workflows, CNNs, auto-encoders to solve critical problems in health-tech and e-commerce.',
   },
   {
-    heading:
-      'Experienced in designing and leading development of multi-region, highly available API solutions',
-    body: 'for secure RESTful and GraphQL APIs with scalable data storage warehousing.',
+    heading: 'Experienced in designing and leading development of APIs',
+    body: 'for multi-region, highly available solutions, while prioritizing security for both RESTful and GraphQL APIs with scalable data storage warehousing.',
   },
   {
     heading: 'Proficient in software architecture for cloud platforms',

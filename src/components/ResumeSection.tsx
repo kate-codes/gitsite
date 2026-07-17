@@ -9,6 +9,7 @@ import {
 } from '../constants';
 import { useColorTheme } from '../context/ColorThemeContext';
 import ResumeSidebar from './ResumeSidebar';
+import ExpandableSummaryItem from './ExpandableSummaryItem';
 
 const ResumeSection: React.FC = () => {
   const { colors } = useColorTheme();
@@ -80,27 +81,14 @@ const ResumeSection: React.FC = () => {
           Professional Summary
         </Typography>
 
-        <Box component='ul' sx={{ m: 0, pl: 2.5 }}>
+        <Box component='ul' sx={{ m: 0, pl: 0, listStyle: 'none' }}>
           {PROFESSIONAL_SUMMARY.map(({ heading, body }, i) => (
-            <Box
-              component='li'
+            <ExpandableSummaryItem
               key={i}
-              sx={{
-                color: colors.resumeBodyText,
-                lineHeight: 1.8,
-                mb: i < PROFESSIONAL_SUMMARY.length - 1 ? 1.5 : 0,
-              }}
-            >
-              <Typography variant='body1' component='span'>
-                <Typography
-                  component='span'
-                  sx={{ fontWeight: 700, color: colors.resumeHeadingText }}
-                >
-                  {heading}
-                </Typography>{' '}
-                {body}
-              </Typography>
-            </Box>
+              heading={heading}
+              body={body}
+              isLast={i === PROFESSIONAL_SUMMARY.length - 1}
+            />
           ))}
         </Box>
       </Paper>
