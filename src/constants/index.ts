@@ -49,6 +49,138 @@ export const RESUME_AVAILABILITY =
   'Local to Seattle, Available for Hybrid, Relocation, or Remote Work';
 export const RESUME_TAGLINE = 'Building software that users love and teams can scale with.';
 
+export const EDUCATION = {
+  degree: 'Bachelor of Science in Computer Science',
+  institution: 'University of Washington',
+  location: 'Bothell, WA',
+  graduated: 'June 2018',
+};
+
+export interface SkillCategory {
+  key: string;
+  label: string;
+  skills: string[];
+}
+
+export const SKILL_CATEGORIES: SkillCategory[] = [
+  {
+    key: 'software',
+    label: 'Software Proficiencies',
+    skills: [
+      'C#',
+      'C++',
+      'Python',
+      'Java',
+      'HTML5',
+      'CSS',
+      'JavaScript',
+      'TypeScript',
+      'Node.js',
+      'React',
+      'React Native',
+      'MySQL',
+      'NoSQL',
+      'SQL',
+      'Docker',
+      'Flask',
+      'x86 Assembly',
+    ],
+  },
+  {
+    key: 'ml',
+    label: 'Machine Learning',
+    skills: [
+      'TensorFlow',
+      'TensorBoard',
+      'Keras',
+      'MATLAB',
+      'Jupyter Notebook',
+      'OpenCV',
+      'Scikit-Image',
+      'Supervisely',
+      'OpenMMLab',
+    ],
+  },
+  {
+    key: 'devtools',
+    label: 'Development Tools',
+    skills: [
+      'Git',
+      'Splunk',
+      'Postman',
+      'Visual Studio',
+      'VS Code',
+      'IntelliJ',
+      'Jenkins',
+      'Cypress',
+      'Jest',
+      'Grafana',
+      'Bootstrap',
+    ],
+  },
+  {
+    key: 'workflow',
+    label: 'Workflow Tools',
+    skills: [
+      'Jira',
+      'Trello',
+      'Miro',
+      'Figma',
+      'Confluence',
+      'LucidChart',
+      'LucidSpark',
+      'Mermaid.js',
+      'TestFairy',
+      'PlantUML',
+      'Adobe XD',
+      'Adobe Illustrator',
+      'CorelDRAW',
+      'GIMP',
+    ],
+  },
+  {
+    key: 'design',
+    label: 'Manufacturing & Design',
+    skills: [
+      'Autodesk Maya',
+      '3ds Max',
+      'After Effects',
+      'Photoshop',
+      'Premiere Pro',
+      'AutoCAD',
+      'Unity',
+      'Unreal',
+      'Fusion 360',
+      'GCode',
+      'CNC',
+    ],
+  },
+  {
+    key: 'os',
+    label: 'Operating Systems',
+    skills: ['Windows', 'Linux', 'Mac OS'],
+  },
+  {
+    key: 'general',
+    label: 'General Skills',
+    skills: [
+      'Communication',
+      'Problem-Solving',
+      'Team Leadership',
+      'Project Management',
+      'Visual Design',
+      'UX/UI Prototyping',
+      'UX Design',
+      'Developing Securely',
+    ],
+  },
+  {
+    key: 'languages',
+    label: 'Language Proficiencies',
+    skills: ['English (Native)', 'Spanish (Professional)', 'Japanese (N5, studying)'],
+  },
+];
+
 export interface ColorTheme {
   gradientPrimary: string;
   gradientSecondary: string;

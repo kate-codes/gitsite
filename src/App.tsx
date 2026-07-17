@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { Box } from '@mui/material';
 import HelloWorldCard from './components/HelloWorldCard';
@@ -7,7 +7,6 @@ import Footer from './components/Footer';
 import AboutSection from './components/AboutSection';
 import ResumeSection from './components/ResumeSection';
 import ContactSection from './components/ContactSection';
-import ExperienceSection from './components/ExperienceSection';
 import ProjectsSection from './components/ProjectsSection';
 import PaletteView from './components/PaletteView';
 import { useHelloWorldClick } from './hooks/useHelloWorldClick';
@@ -20,9 +19,25 @@ const PalettePage: React.FC = () => {
   return <PaletteView onBack={() => navigate('/about')} />;
 };
 
+let catLogged = false;
+
 const AppContent: React.FC = () => {
   const { handleClick } = useHelloWorldClick();
   const { colors } = useColorTheme();
+
+  useEffect(() => {
+    if (catLogged) { return; }
+    catLogged = true;
+    const art = [
+      ' _._     _,-\'""`-._',
+      "(,-.\`._,'(       |\\`-/|",
+      "    \`-.-' \\ )-\`( , o o)",
+      '          \`-    \\\`_\`"\'-',
+      '',
+      'Oh no! You have found my cat Sphynx! She is a very shy cat and hides in strange places.',
+    ].join('\n');
+    console.log('%c' + art, 'color: #D89F9A; font-family: monospace; line-height: 1.5;');
+  }, []);
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
@@ -44,7 +59,6 @@ const AppContent: React.FC = () => {
             <Route path='/about' element={<AboutSection />} />
             <Route path='/palette' element={<PalettePage />} />
             <Route path='/resume' element={<ResumeSection />} />
-            <Route path='/experience' element={<ExperienceSection />} />
             <Route path='/projects' element={<ProjectsSection />} />
             <Route path='/contact' element={<ContactSection />} />
           </Routes>

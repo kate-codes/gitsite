@@ -27,7 +27,6 @@ import '../styles/NavBar.css';
 const NAV_ITEMS = [
   { label: 'About', path: '/about' },
   { label: 'Resume', path: '/resume' },
-  { label: 'Experience', path: '/experience' },
   { label: 'Projects', path: '/projects' },
   { label: 'Contact', path: '/contact' },
 ];
@@ -35,7 +34,6 @@ const NAV_ITEMS = [
 const NavBar: React.FC = () => {
   const nameRef = useRef<HTMLSpanElement>(null);
   const navigate = useNavigate();
-  const theme = useTheme();
   const isDesktop = useMediaQuery('(min-width: 960px)');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { isDarkMode, colors, toggleDarkMode } = useColorTheme();

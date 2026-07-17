@@ -1,8 +1,9 @@
 import React from 'react';
-import { Paper, Typography, Link } from '@mui/material';
+import { Box, Paper, Typography, Link } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { DISPLAY_NAME, ABOUT_BIO } from '../constants';
 import { useColorTheme } from '../context/ColorThemeContext';
+import ExpertiseCards from './ExpertiseCards';
 
 const INLINE_LINKS = new Map<string, string>([
   [
@@ -46,63 +47,76 @@ const AboutSection: React.FC = () => {
   const { colors } = useColorTheme();
 
   return (
-    <Paper
-      elevation={3}
+    <Box
       sx={{
-        padding: { xs: 4, sm: 6 },
-        maxWidth: 640,
+        display: 'flex',
+        flexDirection: { xs: 'column', lg: 'row' },
+        alignItems: 'flex-start',
+        gap: 4,
         width: '100%',
-        borderRadius: 2,
-        backgroundColor: colors.paperBackground,
-        borderTop: `4px solid ${colors.cardAccentBorder}`,
       }}
     >
-      <Typography
-        variant='h4'
-        component='h2'
-        sx={{ color: colors.cardHeadingText, fontWeight: 700, marginBottom: 2 }}
+      <Box sx={{ flexShrink: 0, maxWidth: 560, width: '100%' }}>
+        <ExpertiseCards />
+      </Box>
+      <Paper
+        elevation={3}
+        sx={{
+          padding: { xs: 4, sm: 6 },
+          flexGrow: 1,
+          minWidth: 0,
+          borderRadius: 2,
+          backgroundColor: colors.paperBackground,
+          borderTop: `4px solid ${colors.cardAccentBorder}`,
+        }}
       >
-        {DISPLAY_NAME}
-      </Typography>
-      {ABOUT_BIO.map((paragraph, i) => {
-        const isLast = i === ABOUT_BIO.length - 1;
-        return (
-          <Typography
-            key={i}
-            variant='body1'
-            sx={{
-              color: colors.defaultText,
-              lineHeight: 1.8,
-              marginBottom: isLast ? 0 : 2,
-            }}
-          >
-            {renderParagraph(paragraph, colors.linkColor)}
-            {isLast && (
-              <>
-                {' '}
-                Here is the{' '}
-                <Link
-                  component='button'
-                  onClick={() => navigate('/palette')}
-                  sx={{
-                    color: colors.linkColor,
-                    verticalAlign: 'baseline',
-                    cursor: 'pointer',
-                    background: 'none',
-                    border: 'none',
-                    padding: 0,
-                    font: 'inherit',
-                  }}
-                >
-                  palette used for this website
-                </Link>
-                , which you can also export if you like.
-              </>
-            )}
-          </Typography>
-        );
-      })}
-    </Paper>
+        <Typography
+          variant='h4'
+          component='h2'
+          sx={{ color: colors.cardHeadingText, fontWeight: 700, marginBottom: 2 }}
+        >
+          {DISPLAY_NAME}
+        </Typography>
+        {ABOUT_BIO.map((paragraph, i) => {
+          const isLast = i === ABOUT_BIO.length - 1;
+          return (
+            <Typography
+              key={i}
+              variant='body1'
+              sx={{
+                color: colors.defaultText,
+                lineHeight: 1.8,
+                marginBottom: isLast ? 0 : 2,
+              }}
+            >
+              {renderParagraph(paragraph, colors.linkColor)}
+              {isLast && (
+                <>
+                  {' '}
+                  Here is the{' '}
+                  <Link
+                    component='button'
+                    onClick={() => navigate('/palette')}
+                    sx={{
+                      color: colors.linkColor,
+                      verticalAlign: 'baseline',
+                      cursor: 'pointer',
+                      background: 'none',
+                      border: 'none',
+                      padding: 0,
+                      font: 'inherit',
+                    }}
+                  >
+                    palette used for this website
+                  </Link>
+                  , which you can also export if you like.
+                </>
+              )}
+            </Typography>
+          );
+        })}
+      </Paper>
+    </Box>
   );
 };
 
