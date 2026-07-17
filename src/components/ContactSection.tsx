@@ -3,7 +3,7 @@ import { Box, Divider, Link, Paper, Typography } from '@mui/material';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import EmailIcon from '@mui/icons-material/Email';
 import GitHubIcon from '@mui/icons-material/GitHub';
-import { useNavigate } from 'react-router-dom';
+import { useNavigateBack } from '../hooks/useNavigateBack';
 import {
   CONTACT_EMAIL_URL,
   CONTACT_GITHUB_URL,
@@ -42,7 +42,7 @@ const CONTACT_LINKS = new Map<string, { url: string; icon: React.ReactNode; labe
 ]);
 
 const ContactSection: React.FC = () => {
-  const navigate = useNavigate();
+  const navigateBack = useNavigateBack();
   const { colors } = useColorTheme();
 
   return (
@@ -57,7 +57,7 @@ const ContactSection: React.FC = () => {
         borderTop: `4px solid ${colors.cardAccentBorder}`,
       }}
     >
-      <BackButton onClick={() => navigate(-1)} />
+      <BackButton onClick={navigateBack} />
       <Typography
         variant='h4'
         component='h2'

@@ -4,7 +4,7 @@ import { combinedPalette, palette } from '../theme/palette';
 export const DISPLAY_NAME = 'Kate Sprague';
 export const APP_TITLE = 'Kate Sprague - Portfolio';
 export const APP_GREETING = 'Welcome to my portfolio! 👋';
-export const APP_BUTTON_TEXT = 'Click Me!';
+export const APP_BUTTON_TEXT = 'Click here to learn more about Kate!';
 export const APP_DESCRIPTION = 'Welcome to my GitHub Pages Portfolio.';
 export const APP_SUBTEXT =
   'This is a React app with TypeScript and Material UI hosted on GitHub Pages.';

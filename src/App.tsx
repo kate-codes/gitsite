@@ -9,7 +9,6 @@ import ResumeSection from './components/ResumeSection';
 import ContactSection from './components/ContactSection';
 import ProjectsSection from './components/ProjectsSection';
 import PaletteView from './components/PaletteView';
-import { useHelloWorldClick } from './hooks/useHelloWorldClick';
 import { ColorThemeProvider, useColorTheme } from './context/ColorThemeContext';
 import './styles/App.css';
 
@@ -22,11 +21,13 @@ const PalettePage: React.FC = () => {
 let catLogged = false;
 
 const AppContent: React.FC = () => {
-  const { handleClick } = useHelloWorldClick();
+  const navigate = useNavigate();
   const { colors } = useColorTheme();
 
   useEffect(() => {
-    if (catLogged) { return; }
+    if (catLogged) {
+      return;
+    }
     catLogged = true;
     const art = [
       ' _._     _,-\'""`-._',
@@ -55,7 +56,7 @@ const AppContent: React.FC = () => {
       >
         <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
           <Routes>
-            <Route path='/' element={<HelloWorldCard onButtonClick={handleClick} />} />
+            <Route path='/' element={<HelloWorldCard onButtonClick={() => navigate('/about')} />} />
             <Route path='/about' element={<AboutSection />} />
             <Route path='/palette' element={<PalettePage />} />
             <Route path='/resume' element={<ResumeSection />} />

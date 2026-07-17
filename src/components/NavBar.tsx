@@ -1,4 +1,4 @@
-import React, { useRef, useLayoutEffect, useState } from 'react';
+import React, { useRef, useLayoutEffect } from 'react';
 import {
   AppBar,
   Toolbar,
@@ -17,7 +17,8 @@ import Brightness7Icon from '@mui/icons-material/Brightness7';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import { useMobileNavigation } from '../hooks/useMobileNavigation';
 import githubLogo from '../assets/images/github_logo.png';
 import { DISPLAY_NAME } from '../constants';
 import { useColorTheme } from '../context/ColorThemeContext';
@@ -32,10 +33,9 @@ const NAV_ITEMS = [
 
 const NavBar: React.FC = () => {
   const nameRef = useRef<HTMLSpanElement>(null);
-  const navigate = useNavigate();
   const isDesktop = useMediaQuery('(min-width: 960px)');
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { isDarkMode, colors, toggleDarkMode } = useColorTheme();
+  const { mobileMenuOpen, openMenu, closeMenu, handleNavigate } = useMobileNavigation();
 
   useLayoutEffect(() => {
     const el = nameRef.current;
@@ -46,11 +46,6 @@ const NavBar: React.FC = () => {
     el.style.setProperty('--typewriter-width', `${el.offsetWidth}px`);
     el.style.animation = '';
   }, []);
-
-  const handleNavigate = (path: string) => {
-    navigate(path);
-    setMobileMenuOpen(false);
-  };
 
   const themeToggle = (
     <Box sx={{ display: 'flex', alignItems: 'center' }}>
@@ -87,13 +82,13 @@ const NavBar: React.FC = () => {
             <Avatar
               src={githubLogo}
               alt='Home'
-              onClick={() => navigate('/')}
+              onClick={() => handleNavigate('/')}
               sx={{ width: 36, height: 36, cursor: 'pointer', flexShrink: 0 }}
             />
             <span
               ref={nameRef}
               className='typewriter-name'
-              onClick={() => navigate('/')}
+              onClick={() => handleNavigate('/')}
               style={{ cursor: 'pointer' }}
             >
               {DISPLAY_NAME}
@@ -131,7 +126,7 @@ const NavBar: React.FC = () => {
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
               {themeToggle}
               <IconButton
-                onClick={() => setMobileMenuOpen(true)}
+                onClick={openMenu}
                 edge='end'
                 sx={{ color: colors.headerText, ml: 0.25 }}
                 aria-label='Open navigation menu'
@@ -146,7 +141,7 @@ const NavBar: React.FC = () => {
       <Drawer
         anchor='right'
         open={mobileMenuOpen}
-        onClose={() => setMobileMenuOpen(false)}
+        onClose={closeMenu}
         PaperProps={{
           sx: {
             width: 220,
@@ -157,7 +152,7 @@ const NavBar: React.FC = () => {
       >
         <Box sx={{ display: 'flex', justifyContent: 'flex-end', p: 1 }}>
           <IconButton
-            onClick={() => setMobileMenuOpen(false)}
+            onClick={closeMenu}
             sx={{ color: colors.headerText }}
             aria-label='Close navigation menu'
           >

@@ -1,6 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import { Box, Collapse, Typography } from '@mui/material';
 import { useColorTheme } from '../context/ColorThemeContext';
+import { useTypewriterEffect } from '../hooks/useTypewriterEffect';
 
 interface Props {
   heading: string;
@@ -8,40 +9,9 @@ interface Props {
   isLast: boolean;
 }
 
-const TYPEWRITER_SPEED_MS = 12;
-
 const ExpandableSummaryItem: React.FC<Props> = ({ heading, body, isLast }) => {
   const { colors } = useColorTheme();
-  const [isOpen, setIsOpen] = useState(false);
-  const [displayedText, setDisplayedText] = useState('');
-  const [isTyping, setIsTyping] = useState(false);
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-
-  useEffect(() => {
-    if (isOpen && displayedText === '') {
-      setIsTyping(true);
-      let i = 0;
-      intervalRef.current = setInterval(() => {
-        i++;
-        setDisplayedText(body.slice(0, i));
-        if (i >= body.length) {
-          if (intervalRef.current) { clearInterval(intervalRef.current); }
-          setIsTyping(false);
-        }
-      }, TYPEWRITER_SPEED_MS);
-    }
-    return () => {
-      if (intervalRef.current) { clearInterval(intervalRef.current); }
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isOpen]);
-
-  const handleToggle = () => {
-    if (!isOpen) {
-      setDisplayedText('');
-    }
-    setIsOpen((prev) => !prev);
-  };
+  const { isOpen, displayedText, isTyping, handleToggle } = useTypewriterEffect(body);
 
   return (
     <Box

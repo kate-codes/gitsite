@@ -1,11 +1,11 @@
 import React from 'react';
 import { Paper, Typography } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import { useNavigateBack } from '../hooks/useNavigateBack';
 import BackButton from './BackButton';
 import { useColorTheme } from '../context/ColorThemeContext';
 
 const ProjectsSection: React.FC = () => {
-  const navigate = useNavigate();
+  const navigateBack = useNavigateBack();
   const { colors } = useColorTheme();
 
   return (
@@ -20,7 +20,7 @@ const ProjectsSection: React.FC = () => {
         borderTop: `4px solid ${colors.cardAccentBorder}`,
       }}
     >
-      <BackButton onClick={() => navigate(-1)} />
+      <BackButton onClick={navigateBack} />
       <Typography
         variant='h4'
         component='h2'
