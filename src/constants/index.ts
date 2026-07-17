@@ -9,8 +9,8 @@ export const APP_DESCRIPTION = 'Welcome to my GitHub Pages Portfolio.';
 export const APP_SUBTEXT =
   'This is a React app with TypeScript and Material UI hosted on GitHub Pages.';
 export const ABOUT_BIO = [
-  'Kate Sprague is a Full-Stack Software Engineer and University of Washington Computer Science graduate. She combines a strong technical foundation in full-stack development with a background in design, security, and user experience.to build secure, scalable, and intuitive web applications.',
-  'She specializes in developing modern full-stack solutions using React, TypeScript, JavaScript, Python, Java, C#, C++, and cloud-based technologies, with a focus on creating maintainable, accessible, and user-centered software.',
+  'Kate Sprague is a Full-Stack Software Engineer local to the Seattle, Washington area. She has earned a Bachelor of Science from the University of Washington school of Computer Science in Bothell. She combines a strong technical foundation in full-stack development with a background in design, security, and user experience testing.',
+  'Her work centers on building modern, full-stack web applications that are secure, scalable, and intuitive from the ground up. She brings hands-on expertise across React, TypeScript, JavaScript, Python, Java, C#, C++, and cloud-based technologies, always with an eye toward creating software that is maintainable, accessible, and genuinely user-centered.',
   "As a researcher with the University of Washington's Intelligent Networks Laboratory, Kate contributed to the BrainGrid academic software ecosystem by evaluating and integrating software engineering tools and development workflows to improve software quality, maintainability, collaboration, and long-term sustainability for scientific research applications.",
   'This website was built with code Kate wrote. You can review and fork the project on GitHub Pages.',
 ];
